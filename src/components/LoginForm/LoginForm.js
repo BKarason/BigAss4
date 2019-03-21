@@ -5,11 +5,11 @@ import { socket } from '../../services/socketService';
 import { Redirect } from 'react-router-dom';
 import ChatLobby from '../ChatLobby/ChatLobby';
 
-class LoginForm extends React.Component{
+class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            name: ''
         };
     }
     onInput(e) {
@@ -25,13 +25,14 @@ class LoginForm extends React.Component{
         this.emitUserToServer(this.state.name);
     }
     emitUserToServer(name) {
-        socket.emit("adduser", name, function(available){
-            if (available){
+        socket.emit("adduser", name, available => {
+            if (available && name !== ''){
                 this.props.history.push('/lobby');
             }
         });
     }
     render() {
+        console.log(this.props);
         const { name } = this.state;
         return (
             <div className="text-center" style={{marginTop: 40 }}>
