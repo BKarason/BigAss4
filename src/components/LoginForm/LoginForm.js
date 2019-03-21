@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addUser } from '../../actions/userActions';
+import { socket } from '../../services/socketService';
 
 class LoginForm extends React.Component{
     constructor(props) {
@@ -15,10 +16,19 @@ class LoginForm extends React.Component{
         });
     }
     onSubmit(e) {
-        e.preventDefault();
+        //e.preventDefault();
         const { addUser } = this.props;
         const { name } = this.state;
         addUser(name);
+        this.emitUserToServer(name);
+    }
+    emitUserToServer(e) {
+        socket.emit("adduser", e, function(available){
+            if (available){
+                // The "GnoMe" username is not taken!
+                console.log(e);
+            }
+        });
     }
     render() {
         const { name } = this.state;
