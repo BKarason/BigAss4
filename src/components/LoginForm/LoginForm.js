@@ -24,6 +24,7 @@ class LoginForm extends React.Component{
         const { name } = this.state;
         return (
             <div className="text-center" style={{marginTop: 40 }}>
+                <p>Enter A Username</p>
                 <form action="" onSubmit={e => this.onSubmit(e)} className="form-horizontal">
                     <div className="form-goup">
                     <input type="text" name="name" id="name" value={ name } onChange={e => this.onInput(e)} />
