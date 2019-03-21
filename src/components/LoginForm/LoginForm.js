@@ -20,12 +20,13 @@ class LoginForm extends React.Component{
         const { addUser } = this.props;
         const { name } = this.state;
         addUser(name);
-        emitUserToServer(name);
+        this.emitUserToServer(name);
     }
     emitUserToServer(e) {
         socket.emit("adduser", e, function(available){
             if (available){
                 // The "GnoMe" username is not taken!
+                console.log(e);
             }
         });
     }
