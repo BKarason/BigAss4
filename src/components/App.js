@@ -17,7 +17,8 @@ class App extends React.Component{
                 <div className="container">
                     <Switch>
                         <Route exact path="/" component={ LoginForm }/>
-                        <Route exact path="/lobby" component={ ChatLobby}/>
+                        <Route exact path="/lobby" component={ ChatLobby }/>
+                        <Route path="*" render={() => <div>404 Not found</div>} />
                     </Switch>
                 </div>
             </div>

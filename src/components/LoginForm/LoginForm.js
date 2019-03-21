@@ -27,7 +27,10 @@ class LoginForm extends React.Component{
     emitUserToServer(name) {
         socket.emit("adduser", name, function(available){
             if (available){
-                this.props.history.push('/lobby');
+                console.log("ég kem defo hingað");
+            }
+            else{
+                console.log("already taken");
             }
         });
     }
