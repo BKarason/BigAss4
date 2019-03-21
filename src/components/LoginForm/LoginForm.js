@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addUser } from '../../actions/userActions';
 import { socket } from '../../services/socketService';
+import { Redirect } from 'react-router-dom';
+import ChatLobby from '../ChatLobby/ChatLobby';
 
 class LoginForm extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            name: '',
         };
     }
     onInput(e) {
@@ -16,17 +18,16 @@ class LoginForm extends React.Component{
         });
     }
     onSubmit(e) {
-        //e.preventDefault();
+        e.preventDefault();
         const { addUser } = this.props;
         const { name } = this.state;
         addUser(name);
-        this.emitUserToServer(name);
+        this.emitUserToServer(this.state.name);
     }
-    emitUserToServer(e) {
-        socket.emit("adduser", e, function(available){
+    emitUserToServer(name) {
+        socket.emit("adduser", name, function(available){
             if (available){
-                // The "GnoMe" username is not taken!
-                console.log(e);
+                this.props.history.push('/lobby');
             }
         });
     }
