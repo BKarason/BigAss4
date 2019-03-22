@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
-/*
+
 class ChatWindow extends React.Component{
     componentDidMount() {
+        console.log(this.props.room);
         //socket.emit('rooms');
         //socket.on('roomlist', rooms => this.setState({users: rooms.room.users}));
         // tengja við ákveðið room sem að notandinn er í og 
@@ -25,19 +26,16 @@ class ChatWindow extends React.Component{
         return (
             <>
                 <div className="chat-window">
-                    <p>{ room }</p>
                 </div>
             </>
         );
     }
 };
-*/
-const ChatWindow = ({ room }) => {
-    return <p>{ room }</p>
-}
-const mapStateToProps = ({ room, name }) => {
+
+
+const mapStateToProps = ({ room }) => {
     return {
-        room, name
+        room
     };
 };
 export default connect(mapStateToProps)(ChatWindow);
