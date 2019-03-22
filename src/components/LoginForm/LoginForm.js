@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addUser } from '../../actions/userActions';
 import { socket } from '../../services/socketService';
-import { Redirect } from 'react-router-dom';
-import ChatLobby from '../ChatLobby/ChatLobby';
+
 
 class LoginForm extends React.Component {
     constructor(props) {

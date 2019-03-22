@@ -1,5 +1,7 @@
 import React from 'react';
 import { socket } from '../../services/socketService';
+import { connect } from 'react-redux';
+import { changeRoom } from '../../actions/roomActions';
 
 
 class ChatLobby extends React.Component {
@@ -37,7 +39,9 @@ class ChatLobby extends React.Component {
         console.log("hurr i em");
         socket.emit('joinroom', { room: e.target.name }, success => {
             if(success){
+                changeRoom(e.target.name);
                 socket.emit('rooms');
+                // redirect á chat window
                 console.log('joined room:');
             }
             else{
@@ -51,6 +55,7 @@ class ChatLobby extends React.Component {
         });
     }
     render(){
+        console.log(this.state);
         var allRooms = [];
         const { roomName } = this.state.roomName;
         //const { roomName } = this.state.roomName;
@@ -74,4 +79,4 @@ class ChatLobby extends React.Component {
     }
 };
 
-export default ChatLobby;
+export default connect(null, { changeRoom })(ChatLobby);
