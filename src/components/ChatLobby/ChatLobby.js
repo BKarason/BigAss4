@@ -14,9 +14,15 @@ class ChatLobby extends React.Component {
         socket.on('roomlist', availRooms => this.setState({availRooms}));
     }
     render(){
+        var allRooms = [];
+        Object.keys(this.state.availRooms).forEach(function(key) {
+            allRooms.push(<div key={key}> { key } </div>)
+        });
+        
         return (
             <div>
                 <h1 className="text-center" style={{marginTop: 40 }}>Chat.io</h1>
+                { allRooms }
             </div>
         )
     }
