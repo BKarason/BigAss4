@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
-
+/*
 class ChatWindow extends React.Component{
     componentDidMount() {
+        //socket.emit('rooms');
+        //socket.on('roomlist', rooms => this.setState({users: rooms.room.users}));
         // tengja við ákveðið room sem að notandinn er í og 
         //fá messages og users fyrir það
     }
     constructor(props) {
         super(props);
         this.state = {
-            // users 
+            users: {} 
             //og messages 
             // og curr message fyrir room'ið sem að user er í 
         }
@@ -21,15 +23,21 @@ class ChatWindow extends React.Component{
     render() {
         //const { users, messages, message } = this.state; 
         return (
-            <div className="chat-window">
-                <p>{this.state.room}</p>
-            </div>
+            <>
+                <div className="chat-window">
+                    <p>{ room }</p>
+                </div>
+            </>
         );
     }
 };
-const mapStateToProps = ({ room }) => {
+*/
+const ChatWindow = ({ room }) => {
+    return <p>{ room }</p>
+}
+const mapStateToProps = ({ room, name }) => {
     return {
-        room
+        room, name
     };
 };
 export default connect(mapStateToProps)(ChatWindow);
