@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
 
 class ChatWindow extends React.Component{
@@ -21,10 +22,14 @@ class ChatWindow extends React.Component{
         //const { users, messages, message } = this.state; 
         return (
             <div className="chat-window">
-
+                <p>{this.state.room}</p>
             </div>
         );
     }
 };
-
-export default ChatWindow;
+const mapStateToProps = ({ room }) => {
+    return {
+        room
+    };
+};
+export default connect(mapStateToProps)(ChatWindow);
