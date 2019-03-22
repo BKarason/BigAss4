@@ -13,10 +13,14 @@ class ChatLobby extends React.Component {
         socket.emit('rooms');
         socket.on('roomlist', availRooms => this.setState({availRooms}));
     }
+    joinRoom(e){
+        console.log("suck my cuck");
+    }
     render(){
+        console.log(this.state);
         var allRooms = [];
         Object.keys(this.state.availRooms).forEach(function(key) {
-            allRooms.push(<div key={key}> { key } </div>)
+        allRooms.push(<div key={key}><button type="button" key={key} name={key}></button> { key } </div>)
         });
         
         return (
