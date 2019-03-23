@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
+import Users from '../Users/Users';
+import Messages from '../Messages/Messages';
+
 
 class ChatWindow extends React.Component{
     componentDidMount() {
@@ -53,7 +56,9 @@ class ChatWindow extends React.Component{
         return (
             <>
                 <div className="chat-window">
-                    <p className="text-center">Chat room: { room }</p>
+                    <h3 className="text-center">Chat room: { room }</h3>
+                    <Messages messages={ this.state.messageHistory }/>
+                    <Users users={ this.state.users }/>
                 </div>
                 <form action=""  onSubmit={e => this.sendMessage(e)} className="form-horizontal">
                     <div className="form-goup">
