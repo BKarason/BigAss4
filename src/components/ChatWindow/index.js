@@ -4,9 +4,7 @@ import { socket } from '../../services/socketService';
 
 class ChatWindow extends React.Component{
     componentDidMount() {
-        const room = this.props.room;
-        console.log("hérna");
-        console.log(this.props.room);
+        socket.on('roomlist', availRooms => this.setState({availRooms}));
         //tengja við ákveðið room sem að notandinn er í og 
         //fá messages og users fyrir það
     }
@@ -14,6 +12,7 @@ class ChatWindow extends React.Component{
         super(props);
         this.state = {
             availRooms: {},
+            myRoom: {}
             //og messages 
             // og curr message fyrir room'ið sem að user er í 
         }
@@ -22,13 +21,12 @@ class ChatWindow extends React.Component{
         // notar sendmsg fallið á server sem að tekur roomName og currmessage
     }
     render() {
-        const { room } = this.props.room;
-    
+        const { user } = this.props.user;
         //const { users, messages, message } = this.state; 
         return (
             <>
                 <div className="chat-window">
-                    <p>{ room }</p>
+                    <p>{ user }</p>
                 </div>
             </>
         );
@@ -36,9 +34,10 @@ class ChatWindow extends React.Component{
 };
 
 
-const mapStateToProps = ({ room, rooms }) => {
+const mapStateToProps = ({ user, room }) => {
     return {
-        room, rooms
+        user,
+        room
     };
 };
 export default connect(mapStateToProps)(ChatWindow);

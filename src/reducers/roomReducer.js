@@ -1,8 +1,7 @@
 import { CHANGE_ROOM } from '../constants/constants';
 
 const initalState = {
-    room: '',
-    rooms: {}
+    roomName: ''
 };
 
 export default function(state = initalState, action) {
