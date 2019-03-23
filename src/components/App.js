@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LoginForm from './LoginForm/LoginForm';
 import ChatLobby from './ChatLobby/ChatLobby';
-import ChatWindow from './ChatWindow';
+import ChatWindow from './ChatWindow/ChatWindow';
 
 
 

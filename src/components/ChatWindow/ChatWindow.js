@@ -4,7 +4,7 @@ import { socket } from '../../services/socketService';
 
 class ChatWindow extends React.Component{
     componentDidMount() {
-        socket.on('roomlist', availRooms => this.setState({availRooms}));
+
         //tengja við ákveðið room sem að notandinn er í og 
         //fá messages og users fyrir það
     }
@@ -12,7 +12,7 @@ class ChatWindow extends React.Component{
         super(props);
         this.state = {
             availRooms: {},
-            myRoom: {}
+            myRoom: this.props.room
             //og messages 
             // og curr message fyrir room'ið sem að user er í 
         }
