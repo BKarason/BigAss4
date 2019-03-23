@@ -49,6 +49,13 @@ class ChatWindow extends React.Component{
             [e.target.name]: e.target.value
         });
     }
+    openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+      
+    closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
     render() {
         //const { users, messages, message } = this.state; 
         const { room } = this.props.room;
@@ -68,6 +75,15 @@ class ChatWindow extends React.Component{
                         <input type="submit" value="Send" className="btn btn-primary" />
                     </div>
                 </form>
+                <h3 className="text-center" onClick={() => this.openForm()}>Private messages:</h3>
+                <div className="chat-window" id="myForm">
+                    <form action="" className="form-container">
+                            <textarea placeholder="Type message.." name="msg" required></textarea>
+
+                            <button type="submit" className="btn">Send</button>
+                            <button type="button" className="btn cancel" onClick={() => this.closeForm()}>Close</button>
+                    </form>
+                </div>
             </>
         );
     }
