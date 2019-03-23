@@ -36,7 +36,7 @@ class ChatLobby extends React.Component {
     
     joinRoom(e) {
         e.preventDefault();
-        this.props.changeRoom(e.target.name);
+        this.props.changeRoom(e.target.name, this.state.availRooms[e.target.name]);
         socket.emit('joinroom', { room: e.target.name}, success => {
             if(success){
                 console.log('joined room:');
