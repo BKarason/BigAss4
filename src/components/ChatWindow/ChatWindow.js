@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
 import Users from '../Users/Users';
 import Messages from '../Messages/Messages';
-import PrivateChat from '../PrivateChat/PrivateChat';
 import Ops from '../Ops/Ops';
 import { changeRoom } from '../../actions/roomActions';
 import Header from '../Header/index';
@@ -85,7 +84,6 @@ class ChatWindow extends React.Component{
                         <button type="button" onClick={e => this.sendMessage(e)}>Send</button>
                     </div>
                 </div>
-                <PrivateChat />
             </>
         );
     }

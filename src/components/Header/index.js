@@ -1,4 +1,5 @@
 import React from 'react';
+import NavLinks from '../NavLinks/NavLinks';
 import { connect } from 'react-redux';
 
 
@@ -13,7 +14,8 @@ class Header extends React.Component {
 
     render(){
         return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">User Name = {this.props.user.user} </nav>
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark"><NavLinks /> User Name = {this.props.user.user} 
+            </nav>
         );
     }
 }

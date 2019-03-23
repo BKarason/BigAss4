@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
+import Header from '../Header/index';
 
 class PrivateChat extends React.Component{
     componentDidMount() {
@@ -37,6 +38,7 @@ class PrivateChat extends React.Component{
         //const { messages } = this.state.messages;
         return (
             <>
+                <Header/>
                 <div className="chat-window" id="prvtmsg">
                     <h3 className="text-center header">Private messages:</h3>
                     <div className="input-container">
