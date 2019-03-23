@@ -36,10 +36,11 @@ class ChatLobby extends React.Component {
     
     joinRoom(e) {
         e.preventDefault();
+        changeRoom(e.target.name);
         console.log("hurr i em");
         socket.emit('joinroom', { room: e.target.name }, success => {
             if(success){
-                changeRoom(e.target.name);
+                
                 socket.emit('rooms');
                 // redirect á chat window
                 console.log('joined room:');
