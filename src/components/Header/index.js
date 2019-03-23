@@ -1,9 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Header = ({user}) => {
-    return <nav className="navbar navbar-expand-lg navbar-dark bg-primary">User Name = { user }</nav>
-};
+
+class Header extends React.Component {
+    componentDidMount() {
+
+    }
+
+    constructor(props) {
+        super(props);
+    }
+
+    render(){
+        return(
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">User Name = {this.props.user.user} </nav>
+        );
+    }
+}
 
 const mapStateToProps = ({ user }) => {
     return {

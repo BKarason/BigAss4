@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
 import Users from '../Users/Users';
 import Messages from '../Messages/Messages';
-import Ops from '../Ops/Ops';
+import { changeRoom } from '../../actions/roomActions';
+import Header from '../Header/index';
 
 
 class ChatWindow extends React.Component{
@@ -18,6 +19,7 @@ class ChatWindow extends React.Component{
                 this.setState({messageHistory});
             }
         });
+        
         //tengja við ákveðið room sem að notandinn er í og 
         //fá messages og users fyrir það
     }
@@ -46,6 +48,12 @@ class ChatWindow extends React.Component{
             return false;
         }
     }
+    leaveRoom(e){
+        e.preventDefault();
+        socket.emit('partroom', this.props.room.room);
+        this.props.changeRoom('');
+        this.props.history.push('/lobby');
+    }
     onInput(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -57,6 +65,8 @@ class ChatWindow extends React.Component{
         const { message } = this.state;
         return (
             <>
+            <Header/>
+                <button type="button" className="leaveButton" onClick={e => this.leaveRoom(e)}>Leave Room</button>
                 <div className="chat-window">
                     <h2 className="text-center header">Chat room: { room }</h2>
                     <Messages messages={ this.state.messageHistory }/>
@@ -78,4 +88,4 @@ const mapStateToProps = ({ user, room }) => {
         room
     };
 };
-export default connect(mapStateToProps)(ChatWindow);
+export default connect(mapStateToProps, { changeRoom })(ChatWindow);

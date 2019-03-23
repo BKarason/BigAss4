@@ -49,3 +49,7 @@
     border-top: solid 1px black;
     padding: 10px 0;
 }
+.leaveButton {
+    margin-top: 10px;
+    margin-left: 45%;
+}
