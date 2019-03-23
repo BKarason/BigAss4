@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
 import Users from '../Users/Users';
 import Messages from '../Messages/Messages';
+import PrivateChat from '../PrivateChat/PrivateChat';
+import Ops from '../Ops/Ops';
 
 
 class ChatWindow extends React.Component{
@@ -39,6 +41,7 @@ class ChatWindow extends React.Component{
         console.log(message);
         if(message !== ''){
             socket.emit('sendmsg', { roomName: this.props.room.room, msg: message });
+            this.setState({message: ''});
         }
         else{
             return false;
@@ -50,40 +53,28 @@ class ChatWindow extends React.Component{
         });
     }
     openForm() {
-        document.getElementById("myForm").style.display = "block";
+        document.getElementById("prvtmsg").style.display = "block";
     }
       
     closeForm() {
-        document.getElementById("myForm").style.display = "none";
+        document.getElementById("prvtmsg").style.display = "none";
     }
     render() {
         //const { users, messages, message } = this.state; 
         const { room } = this.props.room;
-        const { message } = this.state.message;
+        const { message } = this.state;
         return (
             <>
                 <div className="chat-window">
-                    <h3 className="text-center">Chat room: { room }</h3>
+                    <h2 className="text-center header">Chat room: { room }</h2>
                     <Messages messages={ this.state.messageHistory }/>
-                    <Users users={ this.state.users }/>
-                </div>
-                <form action=""  onSubmit={e => this.sendMessage(e)} className="form-horizontal">
-                    <div className="form-goup">
-                    <input type="text" placeholder="Type your message..." name="message" id="message" value={ message } onChange={e => this.onInput(e)} />
+                    <Users users={ this.state.users } ops={ this.state.ops }/>
+                    <div className="input-container">
+                        <input type="text" value={ message } name="message" onChange={e => this.onInput(e)} placeholder="Type your message.."/>
+                        <button type="button" onClick={e => this.sendMessage(e)}>Send</button>
                     </div>
-                    <div className="form-group">
-                        <input type="submit" value="Send" className="btn btn-primary" />
-                    </div>
-                </form>
-                <h3 className="text-center" onClick={() => this.openForm()}>Private messages:</h3>
-                <div className="chat-window" id="myForm">
-                    <form action="" className="form-container">
-                            <textarea placeholder="Type message.." name="msg" required></textarea>
-
-                            <button type="submit" className="btn">Send</button>
-                            <button type="button" className="btn cancel" onClick={() => this.closeForm()}>Close</button>
-                    </form>
                 </div>
+                <PrivateChat />
             </>
         );
     }
