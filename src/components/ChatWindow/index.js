@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
+import Users from '../Users/Users';
+import Messages from '../Messages/Messages';
+
 
 class ChatWindow extends React.Component{
     componentDidMount() {
@@ -35,11 +38,11 @@ class ChatWindow extends React.Component{
         //const { users, messages, message } = this.state; 
         const { room } = this.props.room;
         return (
-            <>
                 <div className="chat-window">
-                    <p className="text-center">Chat room: { room }</p>
+                    <h3 className="text-center">Chat room: { room }</h3>
+                    <Messages messages={ this.state.messageHistory }/>
+                    <Users users={ this.state.users }/>
                 </div>
-            </>
         );
     }
 };
