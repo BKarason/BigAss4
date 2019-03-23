@@ -1,8 +1,15 @@
 import { CHANGE_ROOM } from '../constants/constants';
 
-export default function(state = {}, action) {
+const initalState = {
+    room: '',
+    rooms: {}
+};
+
+export default function(state = initalState, action) {
     switch (action.type) {
-        case CHANGE_ROOM: return action.payload;
+        case CHANGE_ROOM: 
+            console.log(action.payload);
+            return action.payload;
         default: return state;
     }
 };
