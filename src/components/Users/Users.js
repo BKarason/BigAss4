@@ -8,10 +8,10 @@ class Users extends React.Component{
     render(){
         var users = [];
         Object.keys(this.props.users).forEach(key => {
-            users.push(<div key={key}></div>)
+            users.push(<div key={key} className="users">{key}</div>)
         });
         return(
-            <div>
+            <div className="users">
                 { users }
             </div>
         )
