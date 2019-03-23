@@ -20,19 +20,21 @@ class ChatLobby extends React.Component {
     createRoom(e) {
         e.preventDefault();
         const roomName = this.state.roomName;
+        this.props.changeRoom(roomName);
         console.log(roomName);
         if(roomName !== ''){
             socket.emit('joinroom', { room: roomName }, success => {
                 if(success){
-                    socket.emit('rooms');
-                    
-                    console.log("room  created!")
+                    //socket.emit('rooms');
+                    console.log("room  created!");
+                    this.props.history.push('/chatwindow');
                 }
                 else{
                     console.log('Error creating room!');
                 }
             });
         }
+        
     }
     
     joinRoom(e) {
@@ -40,7 +42,7 @@ class ChatLobby extends React.Component {
         this.props.changeRoom(e.target.name);
         socket.emit('joinroom', { room: e.target.name }, success => {
             if(success){
-                socket.emit('rooms');
+                //socket.emit('rooms');
                 console.log('joined room:');
                 this.props.history.push('/chatwindow');
             }
