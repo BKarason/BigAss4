@@ -1,4 +1,5 @@
 import React from 'react';
+import NavLinks from '../NavLinks/NavLinks';
 import { connect } from 'react-redux';
 
 
@@ -18,13 +19,13 @@ class Header extends React.Component {
 
     render(){
         let navbar;
-        navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-primary">User Name = {this.props.user.user} ég er ekki op</nav>
+        navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light"><NavLinks/>User Name = {this.props.user.user}</nav>
         Object.keys(this.props.ops).forEach(key => {
             if(this.props.ops[key] == this.props.user.user){
-                navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-primary">User Name = {this.props.user.user} ég er op biiiiitch</nav>
+                navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light">
+                <NavLinks/>User Name = {this.props.user.user} ég er op biiiiitch</nav>
             }
         });
-        /// { navbar } í divi fyrir neðan síðan bara
         return(
                 <>
                     { navbar }

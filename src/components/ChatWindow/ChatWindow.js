@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
 import Users from '../Users/Users';
 import Messages from '../Messages/Messages';
+import Ops from '../Ops/Ops';
 import { changeRoom } from '../../actions/roomActions';
 import Header from '../Header/index';
 
@@ -59,6 +60,13 @@ class ChatWindow extends React.Component{
         this.setState({
             [e.target.name]: e.target.value
         });
+    }
+    openForm() {
+        document.getElementById("prvtmsg").style.display = "block";
+    }
+      
+    closeForm() {
+        document.getElementById("prvtmsg").style.display = "none";
     }
     render() {
         //const { users, messages, message } = this.state; 
