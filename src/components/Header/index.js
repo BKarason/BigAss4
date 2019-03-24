@@ -68,8 +68,12 @@ class Header extends React.Component {
     render(){
         let navbar;
         navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light">
-                Logged in as: {this.props.user.user}
-            </nav>
+                    <div className="dropdown">
+                        <div className="dropbtn">
+                                Logged in as: {this.props.user.user}
+                        </div>
+                    </div>
+                </nav>
         var ops = [];
         var users = [];
         var kickable = [];
@@ -111,7 +115,12 @@ class Header extends React.Component {
                             { banList }
                         </div>
                     </div>
-                    OP   - Logged in as: {this.props.user.user}
+                    <div className="dropdown">
+                        <div className="dropbtn">
+                            OP   - Logged in as: {this.props.user.user}
+                        </div>
+                    </div>
+                    
                 </nav>
             }
         });
