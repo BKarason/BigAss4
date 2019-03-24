@@ -89,7 +89,7 @@ class Header extends React.Component {
             if(this.props.ops.ops[key] == this.props.user.user){
                 navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light">
                     <NavLinks/>
-                    <div className="dropdown">
+                    <div className="dropdown ">
                         <button className="dropbtn">De-op</button>
                         <div className="dropdown-content">
                             { ops }

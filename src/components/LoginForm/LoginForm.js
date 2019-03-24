@@ -38,6 +38,7 @@ class LoginForm extends React.Component {
         const { name } = this.state;
         return (
             <div className="text-center" style={{marginTop: 40 }}>
+                <h1 className="welcome">Welcome to Chat.io!</h1>
                 <p>Enter A Username</p>
                 <form action="" onSubmit={e => this.onSubmit(e)} className="form-horizontal">
                     <div className="form-goup">
