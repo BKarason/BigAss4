@@ -19,11 +19,11 @@ class Header extends React.Component {
 
     render(){
         let navbar;
-        navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light"><NavLinks/>User Name = {this.props.user.user}</nav>
+        navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light"><NavLinks/>Logged in as: {this.props.user.user}</nav>
         Object.keys(this.props.ops).forEach(key => {
             if(this.props.ops[key] == this.props.user.user){
                 navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light">
-                <NavLinks/>User Name = {this.props.user.user} ég er op biiiiitch</nav>
+                <NavLinks/> OP  -  Logged in as: {this.props.user.user}</nav>
             }
         });
         return(

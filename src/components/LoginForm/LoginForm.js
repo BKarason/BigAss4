@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
                     <input type="text" name="name" id="name" value={ name } onChange={e => this.onInput(e)} />
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Change name!" className="btn btn-primary" />
+                        <input type="submit" value="Log in!" className="btn btn-primary" />
                     </div>
                 </form>
             </div>
