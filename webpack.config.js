@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -9,6 +10,12 @@ module.exports = {
         publicPath: '/'
     },
     mode: "development",
+    watch: true,
+    optimization: {
+        minimizer: [
+          new UglifyJsPlugin()
+        ]
+    },
     module: {
         rules: [
             { test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' },
