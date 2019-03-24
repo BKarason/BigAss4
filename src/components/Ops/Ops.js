@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Ops extends React.Component{
 
@@ -17,6 +18,10 @@ class Ops extends React.Component{
             </div>
         )
     }
+};
+
+Ops.propTypes = {
+    ops: PropTypes.object.isRequired
 };
 
 export default Ops;

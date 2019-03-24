@@ -6,6 +6,7 @@ import Messages from '../Messages/Messages';
 import { changeRoom } from '../../actions/roomActions';
 import Header from '../Header/index';
 import { roomOps } from '../../actions/opActions';
+import PropTypes from 'prop-types';
 
 
 class ChatWindow extends React.Component{
@@ -100,4 +101,12 @@ const mapStateToProps = ({ user, room }) => {
         room
     };
 };
+
+ChatWindow.propTypes = {
+    user: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    room: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    changeRoom: PropTypes.func.isRequired,
+    roomOps: PropTypes.func.isRequired
+};
+
 export default connect(mapStateToProps, { changeRoom, roomOps })(ChatWindow);

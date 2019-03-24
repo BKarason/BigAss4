@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addUser } from '../../actions/userActions';
 import { socket } from '../../services/socketService';
+import PropTypes from 'prop-types';
 
 
 class LoginForm extends React.Component {
@@ -49,6 +50,10 @@ class LoginForm extends React.Component {
             </div>
         )
     }
+};
+
+LoginForm.propTypes = {
+    addUser: PropTypes.func.isRequired
 };
 
 export default connect(null, { addUser })(LoginForm);

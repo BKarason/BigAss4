@@ -2,6 +2,7 @@ import React from 'react';
 import { socket } from '../../services/socketService';
 import { connect } from 'react-redux';
 import { changeRoom } from '../../actions/roomActions';
+import PropTypes from 'prop-types';
 
 
 class ChatLobby extends React.Component {
@@ -67,7 +68,7 @@ class ChatLobby extends React.Component {
         return (
             <div>
                 <h1 className="text-center" style={{marginTop: 40 }}>Chat.io</h1>
-                { allRooms }
+                
                 <form action="" name={ roomName } onSubmit={e => this.createRoom(e)} className="form-horizontal">
                     <div className="form-goup">
                     <input type="text" name="roomName" id="roomName" value={ roomName } onChange={e => this.onInput(e)} />
@@ -76,9 +77,13 @@ class ChatLobby extends React.Component {
                         <input type="submit" value="Create room!" className="btn btn-primary" />
                     </div>
                 </form>
+                { allRooms }
             </div>
         )
     }
+};
+ChatLobby.propTypes = {
+    changeRoom: PropTypes.func.isRequired
 };
 
 export default connect(null, { changeRoom })(ChatLobby);

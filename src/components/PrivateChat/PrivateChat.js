@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
 import Header from '../Header/index';
+import PropTypes from 'prop-types';
 
 class PrivateChat extends React.Component{
     componentDidMount() {
@@ -58,4 +59,9 @@ const mapStateToProps = ({ user }) => {
         user
     };
 };
+
+PrivateChat.propTypes ={
+    user: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
+};
+
 export default connect(mapStateToProps)(PrivateChat);

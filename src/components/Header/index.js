@@ -1,6 +1,8 @@
 import React from 'react';
 import NavLinks from '../NavLinks/NavLinks';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 
 class Header extends React.Component {
@@ -40,6 +42,11 @@ const mapStateToProps = ({ user, room, ops }) => {
         room,
         ops
     };
+};
+Header.propTypes = {
+    user: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    room: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    ops: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
 };
 
 export default connect(mapStateToProps)(Header);
