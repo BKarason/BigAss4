@@ -5,7 +5,7 @@ import Header from '../Header/index';
 import PropTypes from 'prop-types';
 
 class PrivateChat extends React.Component{
-    componentDidMount() {
+    componentWillMount(){
         socket.on('recv_privatemsg', (username, message) => {
             this.setState({messages: message, sender: username });
         });

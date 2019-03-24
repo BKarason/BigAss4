@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 class ChatLobby extends React.Component {
     componentDidMount() {
+        
         socket.emit('rooms');
         socket.on('roomlist', availRooms => this.setState({availRooms}));
     }
@@ -21,13 +22,14 @@ class ChatLobby extends React.Component {
     createRoom(e) {
         e.preventDefault();
         const roomName = this.state.roomName;
-        this.props.changeRoom(roomName);
+        
         console.log(roomName);
         if(roomName !== ''){
             socket.emit('joinroom', { room: roomName }, success => {
                 if(success){
                     //socket.emit('rooms');
                     console.log("room  created!");
+                    this.props.changeRoom(roomName);
                     this.props.history.push('/chatwindow');
                 }
                 else{
@@ -40,15 +42,16 @@ class ChatLobby extends React.Component {
     
     joinRoom(e) {
         e.preventDefault();
-        this.props.changeRoom(e.target.name);
+        const roomName = e.target.name;
+       
         socket.emit('joinroom', { room: e.target.name }, success => {
             if(success){
                 //socket.emit('rooms');
-                console.log('joined room:');
+                this.props.changeRoom(roomName);
                 this.props.history.push('/chatwindow');
             }
             else{
-                console.log('join failed');
+                alert("you cannot enter this chatroom");
             }
         });
     }
