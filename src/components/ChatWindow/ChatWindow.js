@@ -6,14 +6,22 @@ import Messages from '../Messages/Messages';
 import { changeRoom } from '../../actions/roomActions';
 import Header from '../Header/index';
 import { roomOps } from '../../actions/opActions';
+import { roomUsers } from '../../actions/usersActions';
 
 
 class ChatWindow extends React.Component{
     componentDidMount() {
+        socket.on('kicked', (room, kicked, user) => {
+            if(kicked == this.props.user.user){
+                this.props.changeRoom('');
+                this.props.history.push('/lobby');
+            }
+        });
         socket.on('updateusers', (room, roomUsers, roomOps) =>{
             if(room == this.props.room.room){
                 this.setState({users: roomUsers, ops: roomOps});
                 this.props.roomOps(roomOps);
+                this.props.roomUsers(roomUsers);
             }
         });
         socket.on('updatechat', (room, messageHistory) => {
@@ -100,4 +108,4 @@ const mapStateToProps = ({ user, room }) => {
         room
     };
 };
-export default connect(mapStateToProps, { changeRoom, roomOps })(ChatWindow);
+export default connect(mapStateToProps, { changeRoom, roomOps, roomUsers })(ChatWindow);
