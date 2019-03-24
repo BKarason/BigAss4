@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { socket } from '../../services/socketService';
 import Users from '../Users/Users';
 import Messages from '../Messages/Messages';
-import Ops from '../Ops/Ops';
 import { changeRoom } from '../../actions/roomActions';
 import Header from '../Header/index';
+import { roomOps } from '../../actions/opActions';
 
 
 class ChatWindow extends React.Component{
@@ -13,6 +13,7 @@ class ChatWindow extends React.Component{
         socket.on('updateusers', (room, roomUsers, roomOps) =>{
             if(room == this.props.room.room){
                 this.setState({users: roomUsers, ops: roomOps});
+                this.props.roomOps(roomOps);
             }
         });
         socket.on('updatechat', (room, messageHistory) => {
@@ -76,7 +77,7 @@ class ChatWindow extends React.Component{
         return (
             <>
             
-            <Header ops={this.state.ops}/>
+            <Header/>
                 <button type="button" className="leaveButton" onClick={e => this.leaveRoom(e)}>Leave Room</button>
                 <div className="chat-window">
                     <h2 className="text-center header">Chat room: { room }</h2>
@@ -99,4 +100,4 @@ const mapStateToProps = ({ user, room }) => {
         room
     };
 };
-export default connect(mapStateToProps, { changeRoom })(ChatWindow);
+export default connect(mapStateToProps, { changeRoom, roomOps })(ChatWindow);

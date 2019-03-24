@@ -1,14 +1,12 @@
-import { CHANGE_ROOM } from '../constants/constants';
-
+import { ROOM_OPS } from '../constants/constants';
 
 const initalState = {
-    roomName: ''
+    ops: {}
 };
 
 export default function(state = initalState, action) {
     switch (action.type) {
-        case CHANGE_ROOM: 
-            console.log(action.payload);
+        case ROOM_OPS:
             return action.payload;
         default: return state;
     }
