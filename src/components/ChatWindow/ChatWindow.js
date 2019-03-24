@@ -17,6 +17,12 @@ class ChatWindow extends React.Component{
                 this.props.history.push('/lobby');
             }
         });
+        socket.on('banned', (room, banned, user) => {
+            if(banned == this.props.user.user){
+                this.props.changeRoom('');
+                this.props.history.push('/lobby');
+            }
+        });
         socket.on('updateusers', (room, roomUsers, roomOps) =>{
             if(room == this.props.room.room){
                 this.setState({users: roomUsers, ops: roomOps});
