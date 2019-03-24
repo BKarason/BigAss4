@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import LoginForm from './LoginForm/LoginForm';
 import ChatLobby from './ChatLobby/ChatLobby';
 import ChatWindow from './ChatWindow/ChatWindow';
-import PrivateChat from './PrivateChat/PrivateChat';
+
 
 
 
@@ -19,7 +19,6 @@ class App extends React.Component{
                         <Route exact path="/" component={ LoginForm }/>
                         <Route exact path="/lobby" component={ ChatLobby }/>
                         <Route exact path="/chatwindow" component= { ChatWindow }/>
-                        <Route exact path="/privatechat" component= { PrivateChat }/>
                         <Route path="*" render={() => <div>404 Not found</div>} />
                     </Switch>
                 </div>
@@ -29,3 +28,4 @@ class App extends React.Component{
 }
 
 export default App;
+//<Route exact path="/privatechat" component= { PrivateChat }/>

@@ -7,11 +7,15 @@
     background-size: 100% 40px, auto;
     background-color: #ccc4ff;
     width: 1000px;
-    height: 600px;
+    height: 400px;
     margin: 0 auto;
     margin-top: 40px;
     animation: move-shadow 1s ease-in alternate infinite;
     overflow: hidden;
+}
+
+#prvtmsg {
+    height: 150px;
 }
 
 .chat-window .input-container {
@@ -51,7 +55,7 @@
 }
 .leaveButton {
     margin-top: 10px;
-    margin-left: 45%;
+    margin-left: 1%;
 }
 .welcome {
     margin-bottom:  60px;

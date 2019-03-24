@@ -68,7 +68,6 @@ class Header extends React.Component {
     render(){
         let navbar;
         navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light">
-                <NavLinks/>
                 Logged in as: {this.props.user.user}
             </nav>
         var ops = [];
@@ -88,7 +87,6 @@ class Header extends React.Component {
         Object.keys(this.props.ops.ops).forEach(key => {
             if(this.props.ops.ops[key] == this.props.user.user){
                 navbar = <nav className="navbar navbar-expand-lg navbar-dark bg-light">
-                    <NavLinks/>
                     <div className="dropdown ">
                         <button className="dropbtn">De-op</button>
                         <div className="dropdown-content">

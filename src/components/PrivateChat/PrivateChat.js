@@ -39,7 +39,6 @@ class PrivateChat extends React.Component{
         //const { messages } = this.state.messages;
         return (
             <>
-                <Header/>
                 <div className="chat-window" id="prvtmsg">
                     <h3 className="text-center header">Private messages:</h3>
                     <div className="input-container">

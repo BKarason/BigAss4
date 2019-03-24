@@ -8,6 +8,7 @@ import Header from '../Header/index';
 import { roomOps } from '../../actions/opActions';
 import PropTypes from 'prop-types';
 import { roomUsers } from '../../actions/usersActions';
+import PrivateChat from '../PrivateChat/PrivateChat';
 
 
 class ChatWindow extends React.Component{
@@ -93,8 +94,8 @@ class ChatWindow extends React.Component{
             <>
             
             <Header/>
-                <button type="button" className="leaveButton" onClick={e => this.leaveRoom(e)}>Leave Room</button>
                 <div className="chat-window">
+                <button type="button" className="leaveButton" onClick={e => this.leaveRoom(e)}>Leave Room</button>
                     <h2 className="text-center header">Chat room: { room }</h2>
                     <Messages messages={ this.state.messageHistory }/>
                     <Users users={ this.state.users } ops={ this.state.ops }/>
@@ -103,6 +104,7 @@ class ChatWindow extends React.Component{
                         <button type="button" onClick={e => this.sendMessage(e)}>Send</button>
                     </div>
                 </div>
+                <PrivateChat/>
             </>
         );
     }
