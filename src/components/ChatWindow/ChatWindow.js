@@ -29,7 +29,8 @@ class ChatWindow extends React.Component{
             users: {},
             ops: {},
             messageHistory: [],
-            message: ""
+            message: "",
+            op: false
             //og messages 
             // og curr message fyrir room'ið sem að user er í 
         }
@@ -63,9 +64,11 @@ class ChatWindow extends React.Component{
         //const { users, messages, message } = this.state; 
         const { room } = this.props.room;
         const { message } = this.state;
+        const { op } = this.state;
         return (
             <>
-            <Header/>
+            
+            <Header ops={this.state.ops}/>
                 <button type="button" className="leaveButton" onClick={e => this.leaveRoom(e)}>Leave Room</button>
                 <div className="chat-window">
                     <h2 className="text-center header">Chat room: { room }</h2>
